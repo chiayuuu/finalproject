@@ -1,0 +1,225 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>樂理知識</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style type="text/css">
+			.譜號,.音符,.休止符,.升降,.反覆記號{ float : left;}
+		</style>
+	</head>
+	<body>
+			<header id="header">
+				<a class="logo"><strong>網站</strong>  樂理知識</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="introduce.html">簡介</a></li>
+					<li><a href="history.html">歷史沿革</a></li>
+					<li><a href="test.html">小測驗</a></li>
+				</ul>
+			</nav>
+
+			<section id="main">
+				<div class="inner">
+					<div class="image fit">
+						<img src="images/music.png" height = "250"/>
+					</div>
+					<header>
+						<h1>基礎樂理介紹</h1>
+						<p style = "color:#CD853F;">現在播放的是 : 貝多芬-小提琴 & 鋼琴奏鳴曲第５號『春』-第２樂章</p>
+					</header>
+					<p>*請將游標移到圖片上方*</p>
+					<div class = "譜號">
+						<p style = "color:navy;font-weight:bold;">譜號 : 譜號是用來定義音符所在的音樂位置範圍</p>
+						<span class = "譜號"><img src = "images/高音譜記號.jpg" height = "90" id = "a-high">
+							<div id = "msg6" style = "color:navy; font-weight:bold;"></div></span>
+						<span class = "譜號"><img src = "images/低音譜記號.jpg" height = "90" id = "a-low">
+							<div id = "msg7" style = "color:navy; font-weight:bold;"></div></span>
+					</div><br><br><br><br><br><br><hr>
+					<div class = "音符">
+						<p style = "color:red;font-weight:bold;">音符 : 以全音符為四拍為例，二分音符為4/2(2)拍，以此類推</p>
+						<span class = "音符"><img src = "images/全音符.jpg" height = "80" id = "1">
+							<div id = "msg1" style = "color:red; font-weight:bold;"></div></span>
+						<span class = "音符"><img src = "images/二分音符.jpg" height = "80" id = "2">
+							<div id = "msg2" style = "color:red; font-weight:bold;"></div></span>
+						<span class = "音符"><img src = "images/四分音符.png" height = "80" id = "4">
+							<div id = "msg3" style = "color:red; font-weight:bold;"></div></span>
+						<span class = "音符"><img src = "images/八分音符.jpeg" height = "80" id = "8">
+							<div id = "msg4" style = "color:red; font-weight:bold;"></div></span>
+						<span class = "音符"><img src = "images/十六分音符.jpg" height = "80" id = "16">
+							<div id = "msg5" style = "color:red; font-weight:bold;"></div></span>
+					</div><br><br><br><br><br><hr>
+					<div class = "休止符">
+						<p style = "color:#00AA55;font-weight:bold;">休止符 : 以全休止符為停四拍為例，二分休止符為停(4/2)2拍，以此類推</p>
+						<span class = "休止符"><img src = "images/全休止符.png" height = "80" id = "1-stop">
+							<div id = "msg8" style = "color:#00AA55; font-weight:bold;"></div></span>
+						<span class = "休止符"><img src = "images/二分休止符.png" height = "80" id = "2-stop">
+							<div id = "msg9" style = "color:#00AA55; font-weight:bold;"></div></span>
+						<span class = "休止符"><img src = "images/四分休止符.png" height = "80" id = "4-stop">
+							<div id = "msg10" style = "color:#00AA55; font-weight:bold;"></div></span>
+						<span class = "休止符"><img src = "images/八分休止符.png" height = "80" id = "8-stop">
+							<div id = "msg11" style = "color:#00AA55; font-weight:bold;"></div></span>
+						<span class = "休止符"><img src = "images/十六分休止符.png" height = "80" id = "16-stop">
+							<div id = "msg12" style = "color:#00AA55; font-weight:bold;"></div></span>
+					</div><br><br><br><br><br><hr>
+					<div class = "拍號">
+						<p style = "color:#888888;font-weight:bold;">拍號</p>
+						<span><img src = "images/拍號.png" height = "100">
+							<p style = "color:#888888;">以圖片中四四拍為例，上面的4指的是<strong>每小節4拍</strong>，而下面的4指的是以<strong>四分音符</strong>為一拍，以此類推。</p><span>
+					</div><hr>
+					<div class = "升降">
+						<p style = "color:#FF8800;font-weight:bold;">升、降記號 : 升記號為升高半音，降記號為降低半音，還原記號是將同一小節原本升或降的音還原</p>
+						<span class = "升降"><img src = "images/升記號.png" height = "80" id = "higher">
+							<div id = "msg13" style = "color:#FF8800; font-weight:bold;"></div></span>
+						<span class = "升降"><img src = "images/降記號.png" height = "80" id = "lower">
+							<div id = "msg14" style = "color:#FF8800; font-weight:bold;"></div></span>
+						<span class = "升降"><img src = "images/還原記號.png" height = "80" id = "back">
+							<div id = "msg15" style = "color:#FF8800; font-weight:bold;"></div></span>
+					</div><br><br><br><br><br><hr>
+					<div class = "音唱名">
+						<p style = "color:#5555FF;font-weight:bold;">音名、唱名 : 音名及唱名的對應</p>
+						<span><img src = "images/音名唱名.jpg" height = "50"></span>
+					</div><hr>
+					<div class = "音階">
+						<p style = "color:#B94FFF;font-weight:bold;">音階</p>
+						<span><img src = "images/音階.png" height = "100">
+							<p><ul>七聲音階分為兩種<li style = "color:#00AA88;">大調 : 除3、4&7、1為半音，其餘為全音</li>
+								<li style = "color:#00AAAA;">小調 : 除2、3&5、6為半音，其餘為全音</li></ul></p>
+							<p><ul><strong>For Example:</strong>
+							<li style = "color:#5599FF;">C大調 C-D-E-F-G-A-B-C</li>
+							<li style = "color:#5555FF;">G大調 G-A-B-C-D-E-F#-G</li>
+							<li style = "color:#7744FF;">F大調 F-G-A-Bb-C-D-E-F</li>
+							<li style = "color:#9932CC;">a小調 a-b-c-d-e-f-g-a</li>
+							<li style = "color:#BA55D3;">c小調 c-d-eb-f-g-ab-bb-c</li></ul></p>
+							<p>大調音階中排列規則為 : 全全半全全全半<br>小調音階中排列規則為 : 全半全全半全全</p>
+						</span>
+					</div><hr>
+					<div>
+						<p style = "color:#FF8888;font-weight:bold;">反覆記號 : 介紹幾種較為常見的反覆記號</p>
+						<img src = "images/repeat-1.jpg" height = "80">
+							<p>演奏順序:<strong>A-B-C-A-B-C-D-E</strong></p>
+						<img src = "images/repeat-2.jpg" height = "80">
+							<p>演奏順序:<strong>A-B-C-D-C-D-E</strong></p>
+						<img src = "images/repeat-3.jpg" height = "80">
+							<p>演奏順序:<strong>A-B-C-D-E-F-G-C-D-G-H</strong></p>
+						<span class = "反覆記號"><img src = "images/repeat-4.jpg" height = "70" id = "repeat1">
+							<div id = "msg16" style = "color:#FF8888; font-weight:bold;"></div></span>
+						<span class = "反覆記號"><img src = "images/repeat-5.jpg" height = "70" id = "repeat2">
+							<div id = "msg17" style = "color:#FF8888; font-weight:bold;"></div></span><br><br><br><br>
+						<p>口語稱Segno為"跳蚤" Coda為"烏龜"</p>
+					</div><hr>
+					<div class = "結語">
+						<p style = "color:#D2691E;font-weight:bold;">結語</p>
+						<p>以上所教各位的樂理是入門的基礎，樂理有如音樂之文法，內容非常的廣且深，<br>有興趣學習如何作曲者，樂理是不可或缺的知識，乏味是無可避免的，也希望大家都能在音樂的世界中徜徉著。</p>
+						<img src = "images/lovemusic.jpg" height = "400">
+					</div><br>
+					<div>
+						<p>P.S 如果你都學會了，不妨去玩一下小測驗~別擔心，都有小提示喔~~~</p>
+					</div>
+					<div class = "videoplay">
+						<iframe width="560" height="315" src="https://www.youtube.com/embed/82LDOETuRRo?rel=0&autoplay=1&loop=1&playlist=82LDOETuRRo" frameborder="0" 
+						allowfullscreen="true"allow="autoplay; encrypted-media"></iframe>
+					</div>
+				</div>
+			</section>
+			<br><br><br><br><br>
+			<footer id="footer">
+				<div class="copyright">
+					<a>Designed by Chia Yu Lin.</a>
+				</div>
+			</footer>
+			<script type="text/javascript">
+				function mouseOver(e){
+					if(e.target.getAttribute("id") == "1")
+						document.getElementById("msg1").innerHTML = "全音符";
+					if(e.target.getAttribute("id") == "2")
+						document.getElementById("msg2").innerHTML = "二分音符";
+					if(e.target.getAttribute("id") == "4")
+						document.getElementById("msg3").innerHTML = "四分音符";
+					if(e.target.getAttribute("id") == "8")
+						document.getElementById("msg4").innerHTML = "八分音符";
+					if(e.target.getAttribute("id") == "16")
+						document.getElementById("msg5").innerHTML = "十六分音符";
+					if(e.target.getAttribute("id") == "a-high")
+						document.getElementById("msg6").innerHTML = "高音譜記號";
+					if(e.target.getAttribute("id") == "a-low")
+						document.getElementById("msg7").innerHTML = "低音譜記號";
+					if(e.target.getAttribute("id") == "1-stop")
+						document.getElementById("msg8").innerHTML = "全休止符";
+					if(e.target.getAttribute("id") == "2-stop")
+						document.getElementById("msg9").innerHTML = "二分休止符";
+					if(e.target.getAttribute("id") == "4-stop")
+						document.getElementById("msg10").innerHTML = "四分休止符";
+					if(e.target.getAttribute("id") == "8-stop")
+						document.getElementById("msg11").innerHTML = "八分休止符";
+					if(e.target.getAttribute("id") == "16-stop")
+						document.getElementById("msg12").innerHTML = "十六分休止符";
+					if(e.target.getAttribute("id") == "higher")
+						document.getElementById("msg13").innerHTML = "升記號";
+					if(e.target.getAttribute("id") == "lower")
+						document.getElementById("msg14").innerHTML = "降記號";
+					if(e.target.getAttribute("id") == "back")
+						document.getElementById("msg15").innerHTML = "還原記號";
+					if(e.target.getAttribute("id") == "repeat1")
+						document.getElementById("msg16").innerHTML = "Segno";
+					if(e.target.getAttribute("id") == "repeat2")
+						document.getElementById("msg17").innerHTML = "Coda";
+				}
+				
+				function mouseOut(e){
+					if(e.target.getAttribute("id") == "1")
+						document.getElementById("msg1").innerHTML = "";
+					if(e.target.getAttribute("id") == "2")
+						document.getElementById("msg2").innerHTML = "";
+					if(e.target.getAttribute("id") == "4")
+						document.getElementById("msg3").innerHTML = "";
+					if(e.target.getAttribute("id") == "8")
+						document.getElementById("msg4").innerHTML = "";
+					if(e.target.getAttribute("id") == "16")
+						document.getElementById("msg5").innerHTML = "";
+					if(e.target.getAttribute("id") == "a-high")
+						document.getElementById("msg6").innerHTML = "";
+					if(e.target.getAttribute("id") == "a-low")
+						document.getElementById("msg7").innerHTML = "";
+					if(e.target.getAttribute("id") == "1-stop")
+						document.getElementById("msg8").innerHTML = "";
+					if(e.target.getAttribute("id") == "2-stop")
+						document.getElementById("msg9").innerHTML = "";
+					if(e.target.getAttribute("id") == "4-stop")
+						document.getElementById("msg10").innerHTML = "";
+					if(e.target.getAttribute("id") == "8-stop")
+						document.getElementById("msg11").innerHTML = "";
+					if(e.target.getAttribute("id") == "16-stop")
+						document.getElementById("msg12").innerHTML = "";
+					if(e.target.getAttribute("id") == "higher")
+						document.getElementById("msg13").innerHTML = "";
+					if(e.target.getAttribute("id") == "lower")
+						document.getElementById("msg14").innerHTML = "";
+					if(e.target.getAttribute("id") == "back")
+						document.getElementById("msg15").innerHTML = "";
+					if(e.target.getAttribute("id") == "repeat1")
+						document.getElementById("msg16").innerHTML = "";
+					if(e.target.getAttribute("id") == "repeat2")
+						document.getElementById("msg17").innerHTML = "";
+				}
+				
+				document.addEventListener( "mouseover", mouseOver, false );
+				document.addEventListener( "mouseout", mouseOut, false );
+
+			</script>
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

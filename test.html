@@ -1,0 +1,490 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>小測驗</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<style type="text/css">
+			li {list-style-type:none;}
+			#table {float:left;}
+		</style>
+	</head>
+	<body>
+			<header id="header">
+				<a class="logo"><strong>網站</strong>  小測驗</a>
+				<nav>
+					<a href="#menu">Menu</a>
+				</nav>
+			</header>
+
+			<nav id="menu">
+				<ul class="links">
+					<li><a href="index.html">首頁</a></li>
+					<li><a href="introduce.html">簡介</a></li>
+					<li><a href="history.html">歷史沿革</a></li>
+					<li><a href="teach.html">樂理知識</a></li>
+				</ul>
+			</nav>
+
+			<section id="main">
+				<audio id = "sound" preload = "auto">
+					<source src = "applause.mp3" type = "audio/mpeg">
+				</audio>
+				<div class="inner">
+					<div id = "dice">
+						<span style = "color:#99BBFF; font-weight:bold;">請點選按鈕擲骰子，共5次機會，答對一題+20分</span><br>
+						<input id = "rollButton" type = "button" value = "Roll Dice">
+						<img id = "die1" src = "images/blank.png" alt = "blank image">
+					</div>
+					<div id="display"></div>
+					<table id = "table">
+						<tr>
+						<tbody>
+							<td id = "20"><img src = "images/map20.png" height = "100"></td>
+							<td id = "1"><img src = "images/map1.png" height = "100"></td>
+							<td id = "2"><img src = "images/map2.png" height = "100"></td>
+							<td id = "3"><img src = "images/map3.png" height = "100"></td>
+							<td id = "4"><img src = "images/map4.png" height = "100"></td>
+							<td id = "5"><img src = "images/map5.png" height = "100"></td>
+						</tr>
+						<tr>
+							<td id = "19"><img src = "images/map19.png" height = "100"></td>
+							<td colspan = "4"></td>
+							<td id = "6"><img src = "images/map6.png" height = "100"></td>
+						</tr>
+						<tr>
+							<td id = "18"><img src = "images/map18.png" height = "100"></td>
+							<td colspan = "4"></td>
+							<td id = "7"><img src = "images/map7.png" height = "100"></td>
+						</tr>
+						<tr>
+							<td id = "17"><img src = "images/map17.png" height = "100"></td>
+							<td colspan = "4"></td>
+							<td id = "8"><img src = "images/map8.png" height = "100"></td>
+						</tr>
+						<tr>
+							<td id = "16"><img src = "images/map16.png" height = "100"></td>
+							<td colspan = "4"></td>
+							<td id = "9"><img src = "images/map9.png" height = "100"></td>
+						</tr>
+						<tr>
+							<td id = "15"><img src = "images/map15.png" height = "100"></td>
+							<td id = "14"><img src = "images/map14.png" height = "100"></td>
+							<td id = "13"><img src = "images/map13.png" height = "100"></td>
+							<td id = "12"><img src = "images/map12.png" height = "100"></td>
+							<td id = "11"><img src = "images/map11.png" height = "100"></td>
+							<td id = "10"><img src = "images/map10.png" height = "100"></td>
+						</tr>
+					</tbody>
+					</table>
+					<div id = "question"></div>
+					<div id = "block" style = "display:none;">
+						<p>
+							<label>Your answer:
+							<input type = "text" id = "answer" style="width:20%;"/>
+							</label>
+						</p>
+						<input id = "sure" type = "button" value = "確定" onclick = "check();">
+					</div><br>
+					<button id = "hintbotton" style = "display:none;">HINT</button>
+					<div id = "hint" style = "display:none;">
+					</div>
+					<div id = "endbutton" style = "display:none;">
+						<input type = "button" value = "結束" onclick = "end();">
+					</div>
+					<div id = "nameblock" style = "display:none;">
+						<p>
+							<label>Your name:
+							<input type = "text" id = "name" style="width:40%;"/>
+							</label>
+						</p>
+						<input id = "sure1" type = "button" value = "確定" onclick = "check1();">
+					</div>
+					<div id = "displayscore"></div>
+					<table id = "record" style = "display:none;">
+						<thead><tr><th>Name</th><th>Score</th></tr></thead>
+						<tbody id = "searches"></tbody>
+					</table>
+					<div id = "clearrecord" style = "display:none;">
+						<input type = "button" value = "清除" onclick = "clearall();">
+					</div>
+				</div>
+			</section>
+
+			
+			<script>
+				var die1Image, die1Value, count = 0, time = 0, score = 0, question;
+				var key, val, keys;
+				
+				function start(){
+					var button = document.getElementById( "rollButton" );
+					button.addEventListener( "click", rollDice, false );
+					die1Image = document.getElementById( "die1" );
+				 }
+				
+				
+				function rollDice(){
+					setImage1( die1Image );
+					var divObject = document.getElementById("display");
+					divObject.innerHTML = "";
+				} 
+				
+				function setImage1( die1Img ){
+					die1Value = Math.floor( 1 + Math.random() * 6 );
+					die1Img.setAttribute( "src", "images/die" + die1Value + ".png" );
+					die1Img.setAttribute( "alt", "die image with " + die1Value + " spot(s)" );
+					document.getElementById("question").style.display = "block";
+					document.getElementById("block").style.display = "block";
+					document.getElementById("hint").style.display = "none";
+					if(time > 0)
+						document.getElementById(""+count+"").innerHTML = "<img src = 'images/map"+count+".png' height = '100'>";
+					count = die1Value + count;
+					if(count > 20)
+						count = count - 20;
+					document.getElementById(""+count+"").innerHTML = "<img src = 'images/you.png' height = '100'>";
+					question = document.getElementById("question");
+					question.innerHTML = "";
+					play();
+				} 
+				
+				function play(){
+					
+					if(count == 1){
+						question.innerHTML = "<ul>古典交響曲的固定形式是幾個樂章所形成的?<li>a.1</li> <li>b.2</li> <li>c.3</li> <li>d.4</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>4個樂章~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 2){
+						question.innerHTML = "<ul>古典交響曲的第一樂章<strong>不</strong>包含哪個部份?<li>a.發展部</li> <li>b.展開部</li> <li>c.呈示部</li> <li>d.再現部</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>沒有發展部~~~</p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 3){
+						question.innerHTML = "<ul><strong>交響樂之父</strong>指的是誰?<li>a.貝多芬</li> <li>b.瓦特</li> <li>c.海頓</li> <li>d.愛因斯坦</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>是海頓啦~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 4){
+						check();
+					}
+					else if(count == 5){
+						question.innerHTML = "<ul>一個全音符的拍數 = 幾個四分音符的拍數?<li>a.1</li> <li>b.4</li> <li>c.3</li> <li>d.2</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>4個喔~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 6){
+						question.innerHTML = "<ul>在四四拍中，遇到全休止符需要停幾拍?<li>a.1</li> <li>b.2</li> <li>c.3</li> <li>d.4</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>停4拍~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 7){
+						question.innerHTML = "<ul>唱名為Mi，簡譜計為3，其音名為?<li>a.C</li> <li>b.D</li> <li>c.A</li> <li>d.E</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>音名為E~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 8){
+						check();
+					}
+					else if(count == 9){
+						question.innerHTML = "<ul>六八拍(6/8)指的是每小節幾拍，八分音符為一拍。<li>a.2</li> <li>b.4</li> <li>c.6</li> <li>d.8</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>每小節6拍~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 10){
+						question.innerHTML = "<ul>若四分音符為兩拍，那十六分音符為幾拍?<li>a.2</li> <li>b.1</li> <li>c.1/2</li> <li>d.1/4</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>1/2拍~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 11){
+						question.innerHTML = "<ul>若八分休止符為停一拍，那二分休止符為停幾拍?<li>a.4</li> <li>b.3</li> <li>c.2</li> <li>d.1</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>停4拍~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 12){
+						check();
+					}
+					else if(count == 13){
+						question.innerHTML = "<ul>C大調中哪一個音有升半音?<li>a.C</li> <li>b.D</li> <li>c.E</li> <li>d.都沒有</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>都沒有任何升降~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 14){
+						question.innerHTML = "<ul>G大調中哪一個音有升半音?<li>a.G</li> <li>b.F</li> <li>c.E</li> <li>d.D</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>F有升半音~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 15){
+						question.innerHTML = "<ul>F大調中哪個音有降半音?<li>a.F</li> <li>b.G</li> <li>c.A</li> <li>d.B</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>B有降半音~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 16){
+						check();
+					}
+					else if(count == 17){
+						question.innerHTML = "<ul>以一般鋼琴譜為例，高音譜記號所標示部分之音由哪一隻手所彈?<li>a.右手</li> <li>b.左手</li> <li>c.兩隻手</li> <li>d.以上皆非</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>右手~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 18){
+						question.innerHTML = "<ul>以一般鋼琴譜為例，低音譜記號所標示部分之音由哪一隻手所彈?<li>a.右手</li> <li>b.左手</li> <li>c.兩隻手</li> <li>d.以上皆非</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>左手~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+					else if(count == 19){
+						check();
+					}
+					else if(count == 20){
+						question.innerHTML = "<ul>升記號標示為何?<li>a.@</li> <li>b.&</li> <li>c.#</li> <li>d.*</li></ul>";
+						document.getElementById("block").style.display = "block";
+						document.getElementById("hintbotton").style.display = "block";
+						document.getElementById("rollButton").disabled= true;
+						document.getElementById("hint").innerHTML = "<p style = 'color:#AAAAAA;'>是#~~~<p>";
+						$("#hintbotton").click(function(){ $("#hint").show();
+						});
+					}
+				}
+				
+				function check(){
+					document.getElementById("hintbotton").style.display = "none";
+					document.getElementById("hint").style.display = "none";
+					document.getElementById("rollButton").disabled= false;
+					time++;
+					console.log("check");
+					var answer = document.getElementById("answer").value;
+					if(!answer && count != 4 && count != 8 && count != 12 && count != 16 && count != 19){
+						alert("請輸入答案!");
+						time--;
+						document.getElementById("question").innerHTML = "";
+						play();
+					}
+					else{
+						document.getElementById("answer").value = "";
+						if(time <= 5){
+							if(count == 1){
+								if(answer.toLowerCase() == 'd')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+								
+							}
+							else if(count == 2){
+								if(answer.toLowerCase() == 'a')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 3){
+								if(answer.toLowerCase() == 'c')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 4 || count == 8 || count == 12 || count == 16 || count == 19){
+								question.innerHTML = "<p style = 'color:navy;font-size:200%;'>恭喜你!直接得到20分!</p><img src = 'images/lan.png' style = 'height:50%;'>";
+								document.getElementById("block").style.display = "none";
+								score += 20;
+							}
+							else if(count == 5){
+								if(answer.toLowerCase() == 'b')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 6){
+								if(answer.toLowerCase() == 'd')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 7){
+								if(answer.toLowerCase() == 'd')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 9){
+								if(answer.toLowerCase() == 'c')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 10){
+								if(answer.toLowerCase() == 'c')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 11){
+								if(answer.toLowerCase() == 'a')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 13){
+								if(answer.toLowerCase() == 'd')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 14){
+								if(answer.toLowerCase() == 'b')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 15){
+								if(answer.toLowerCase() == 'd')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 17){
+								if(answer.toLowerCase() == 'a')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 18){
+								if(answer.toLowerCase() == 'b')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							else if(count == 20){
+								if(answer.toLowerCase() == 'c')
+									score += 20;
+								document.getElementById("block").style.display = "none";
+							}
+							if(count != 4 && count != 8 && count != 12 && count != 16 && count != 19){
+								question.innerHTML = "";
+								question.innerHTML = "<p style = 'color:navy; font-size:150%;'>請再擲一次骰子!</p>";
+							}
+						}
+						console.log(score);
+						if(time == 5){
+							if(count == 4 || count == 8 || count == 12 || count == 16 || count == 19){
+								document.getElementById("endbutton").style.display = "block";
+								document.getElementById("rollButton").disabled= true;
+							}
+							else
+								end();
+						}
+					}
+				}
+				
+				function end(){
+					if(count == 4 || count == 8 || count == 12 || count == 16 || count == 19)
+						document.getElementById("endbutton").style.display = "none";
+					question.innerHTML = "";
+					document.getElementById("block").style.display = "none";
+					document.getElementById("dice").style.display = "none";
+					document.getElementById("table").style.display = "none";
+					console.log(score);
+					document.getElementById("nameblock").style.display = "block";
+				}
+				
+				function loadSearches(){
+					document.getElementById("record").style.display = "block";
+					var length = localStorage.length;
+					keys = [];
+					for (var i = 0; i < length; ++i){
+						keys[i] = localStorage.key(i);
+					}
+					keys.sort();
+					
+					var markup = "";
+					for (var key in keys){
+						var val = localStorage.getItem(keys[key]);
+						if(keys[key].startsWith("LCY-")){
+							markup += "<tr><td>" + keys[key].substring(4) + "</td><td>" + val + "</td></tr>";
+						}
+				   }		   
+					markup += "";
+					document.getElementById("searches").innerHTML = markup;
+				}
+				
+				function check1(){
+					document.getElementById("clearrecord").style.display = "block";
+					document.getElementById("nameblock").style.display = "none";
+					key = document.getElementById("name").value;
+					document.getElementById("displayscore").innerHTML = "<p style = 'font-size:250%; color:#FF8888;float:left;'>"+key+" : 恭喜你得到 "+score+" 分!</p>";
+					document.getElementById("displayscore").innerHTML += "<img src = 'images/congratulations.jpg' height = '500';>";
+					var sound = document.getElementById("sound");
+					sound.play();
+					val = score;
+					localStorage.setItem("LCY-" + key, val);
+					loadSearches();
+				}
+				
+				function clearall(){
+					var length = localStorage.length;
+					keys = [];
+					for (var i = 0; i < length; ++i){
+						keys[i] = localStorage.key(i);
+					}
+					for (var key in keys){
+						var val = localStorage.getItem(keys[key]);
+						if(keys[key].startsWith("LCY-")){
+							localStorage.removeItem(keys[key]);
+						}
+				   }
+					loadSearches();
+				}
+				
+				window.addEventListener( "load", start, false );
+			</script>
+			
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+	</body>
+</html>
