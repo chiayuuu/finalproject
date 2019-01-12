@@ -36,7 +36,6 @@
 					<div id = "dice">
 						<span style = "color:#99BBFF; font-weight:bold;">請點選按鈕擲骰子，共5次機會，答對一題+20分</span><br>
 						<input id = "rollButton" type = "button" value = "Roll Dice">
-						<img id = "die1" src = "images/blank.png" alt = "blank image">
 					</div>
 					<div id="display"></div>
 					<table id = "table">
@@ -56,7 +55,11 @@
 						</tr>
 						<tr>
 							<td id = "18"><img src = "images/map18.png" height = "100"></td>
-							<td colspan = "4"></td>
+							<td></td>
+							<td colspan = "2" rowspan = "2">
+								<img id = "die1" src = "images/blank.png" height = "90" style = "position:relative;top:40px;left:50px;" alt = "blank image">
+							</td>
+							<td></td>
 							<td id = "7"><img src = "images/map7.png" height = "100"></td>
 						</tr>
 						<tr>
@@ -83,7 +86,14 @@
 					<div id = "block" style = "display:none;">
 						<p>
 							<label>Your answer:
-							<input type = "text" id = "answer" style="width:20%;"/>
+							<form>
+								<select name="YourLocation" id = "answer" style="width:20%;">
+								　<option value="a">a</option>
+								　<option value="b">b</option>
+								　<option value="c">c</option>
+								　<option value="d">d</option>
+								</select>
+							</form>
 							</label>
 						</p>
 						<input id = "sure" type = "button" value = "確定" onclick = "check();">
@@ -424,6 +434,7 @@
 					document.getElementById("block").style.display = "none";
 					document.getElementById("dice").style.display = "none";
 					document.getElementById("table").style.display = "none";
+					document.getElementById("die1").style.display = "none";
 					console.log(score);
 					document.getElementById("nameblock").style.display = "block";
 				}
